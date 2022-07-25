@@ -8,7 +8,6 @@ phases:
   pre_build:
     commands:
       - echo "installing python dependencies"
-      - npm install
       - pip install -r requirements.txt
   build:
     commands:
