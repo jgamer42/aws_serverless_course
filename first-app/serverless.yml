@@ -10,16 +10,14 @@ provider:
   timeout: 128
   endpointType: regional
   environment:
-    
-custom:
-  NOTES_TABLE: ${self:service}-${opt:stage, self:provider.stage}
+    NOTES_TABLE: ${self:service}-${opt:stage, self:provider.stage}
 resources:
   Resources:
     NotesTable:
       Type: AWS::DynamoDB::Table
       DeletionPolicy: Retain
       Properties:
-        TableName: ${self:custom.NOTES_TABLE}
+        TableName: ${self:provider.environment.NOTES_TABLE}
         AttributeDefinitions:
           - AttributeName: user_id
             AttributeType: S
